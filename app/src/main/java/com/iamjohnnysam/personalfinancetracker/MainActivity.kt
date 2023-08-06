@@ -3,19 +3,18 @@ package com.iamjohnnysam.personalfinancetracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.iamjohnnysam.personalfinancetracker.navigation.BottomNavItem
 import com.iamjohnnysam.personalfinancetracker.navigation.BottomNavigationBar
@@ -41,17 +40,17 @@ class MainActivity : ComponentActivity() {
                                 BottomNavItem(
                                     name = "Budget",
                                     route = Screen.BudgetScreen.route,
-                                    icon = Icons.Default.Home
+                                    icon = Icons.Default.Tune
                                 ),
                                 BottomNavItem(
                                     name = "Transactions",
                                     route = Screen.TransactionScreen.route,
-                                    icon = Icons.Default.Home
+                                    icon = Icons.Default.AddCircle
                                 ),
                                 BottomNavItem(
-                                    name = "Investment",
+                                    name = "Timed",
                                     route = Screen.InvestmentScreen.route,
-                                    icon = Icons.Default.Home
+                                    icon = Icons.Default.DateRange
                                 ),
                                 BottomNavItem(
                                     name = "Settings",
@@ -65,7 +64,14 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
-                ) {
+                ) { innerPadding ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues = innerPadding) // padding applied here
+                    ) {
+                        // all content should be here
+                    }
                     Navigation(
                         navController = naviController)
                 }
